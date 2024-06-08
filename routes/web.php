@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,4 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
-Route::get('/auth', [IndexController::class, 'auth'])->name('index');
+
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::post('/login', [AuthController::class, 'login'])->name('loginPost');
+
+Route::get('/staff-it', function () {
+  return 'Staff IT Page';
+})->middleware('role:staff-it');
