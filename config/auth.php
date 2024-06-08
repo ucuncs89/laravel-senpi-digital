@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'akuns',
+        ],
     ],
 
     /*
@@ -64,7 +68,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
+        'akuns' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Akun::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
