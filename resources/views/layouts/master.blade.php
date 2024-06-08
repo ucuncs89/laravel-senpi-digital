@@ -17,7 +17,8 @@
         <link rel="stylesheet" href="{{ asset("assets/css/hope-ui.min.css?v=2.0.0") }}" />
 
         <!-- Custom Css -->
-        <link rel="stylesheet" href="{{ asset("assets/css/custom.min.css?v=2.0.0") }}" />
+        <link rel="stylesheet" href="{{ asset("assets/css/custom.css") }}" />
+        <link rel="stylesheet" href="{{ asset("assets/css/dashboard.css") }}" />
 
         <!-- Dark Css -->
         <link rel="stylesheet" href="{{ asset("assets/css/dark.min.css") }}" />
