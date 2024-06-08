@@ -25,5 +25,12 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/login', [AuthController::class, 'login'])->name('loginPost');
 
 Route::get('/staff-it', function () {
-  return 'Staff IT Page';
+    return 'Staff IT Page';
 })->middleware('role:staff-it');
+
+// Just For Preview UI
+// Admin Routes
+Route::get('/admin',[IndexController::class, 'admin'])->name('index');
+Route::get('/admin/akun',[IndexController::class, 'account'])->name('akun');
+Route::get('/admin/personil',[IndexController::class, 'personil'])->name('personil');
+Route::get('/admin/senjata-api',[IndexController::class, 'weapon'])->name('senjata-api');
