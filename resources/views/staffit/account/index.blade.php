@@ -5,6 +5,9 @@
 @section("content")
     <div class="content content-inner">
         <div class="section-content">
+            <div class="mb-3 text-end">
+                <a href="#" class="btn btn-primary"> <i class="bi bi-plus-circle"></i> Tambah</a>
+            </div>
             <div class="table-responsive">
                 <table id="datatable" class="table-striped table" data-toggle="data-table">
                     <thead>
