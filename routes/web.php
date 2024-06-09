@@ -42,7 +42,15 @@ Route::middleware(['auth', 'role:staff-it'])->prefix('staff-it')->group(function
     Route::get('/personil', [PersonilController::class, 'index'])->name('staff-it-personil');
 
     // senjata api
-    Route::get('/senjata-api', [WeaponController::class, 'index'])->name('staff-it-senjata-api');
+    Route::resource('senjata-api', WeaponController::class)->names([
+        'index' => 'staff-it-senjata-api.index',
+        'create' => 'staff-it-senjata-api.create',
+        'store' => 'staff-it-senjata-api.store',
+        'show' => 'staff-it-senjata-api.show',
+        'edit' => 'staff-it-senjata-api.edit',
+        'update' => 'staff-it-senjata-api.update',
+        'destroy' => 'staff-it-senjata-api.destroy',
+    ]);
 
     // senjata api
     Route::get('/laporan', [LaporanController::class, 'index'])->name('staff-it-laporan');
