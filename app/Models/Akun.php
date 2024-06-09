@@ -20,4 +20,9 @@ class Akun extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function personil()
+    {
+        return $this->belongsTo(Personil::class, 'personil_id', 'id_personil');
+    }
 }

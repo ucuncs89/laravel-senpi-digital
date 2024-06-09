@@ -30,6 +30,26 @@
         <link rel="stylesheet" href="{{ asset("assets/css/rtl.min.css") }}" />
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+        <style>
+            /* Animasi fade-out */
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                }
+
+                to {
+                    opacity: 0;
+                    display: none;
+                }
+            }
+
+            /* Terapkan animasi pada pesan error */
+            .fade-out {
+                animation: fadeOut 10s ease forwards;
+                /* Ubah durasi animasi sesuai kebutuhan */
+            }
+        </style>
     </head>
 
     <body>
