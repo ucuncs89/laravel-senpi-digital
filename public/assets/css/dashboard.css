@@ -39,6 +39,31 @@
     cursor: pointer;
 }
 
+.report-section {
+    display: flex;
+    align-items: center;
+}
+
+.report-section-label {
+    width: 25%;
+}
+
+.report-section-input {
+    width: 100%;
+}
+
+.form-input-checkbox {
+    display: flex;
+    gap: 12px;
+}
+
+.report-section-footer {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    margin-top: 24px;
+}
+
 @media (max-width: 767.98px) {
     .content {
         margin-top: 0px;
@@ -53,5 +78,19 @@
 
     .iq-banner:not(.hide) + .content-inner {
         margin-top: 0px !important;
+    }
+
+    .report-section {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .report-section-label {
+        margin-bottom: 8px;
+        width: 100%;
+    }
+
+    .report-section-footer .btn {
+        width: 100%;
     }
 }
