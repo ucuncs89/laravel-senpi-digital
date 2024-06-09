@@ -7,6 +7,7 @@ use App\Http\Controllers\staffit\AkunController;
 use App\Http\Controllers\staffit\LaporanController;
 use App\Http\Controllers\staffit\PersonilController;
 use App\Http\Controllers\staffit\WeaponController;
+use App\Models\Personil;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,7 +43,11 @@ Route::middleware(['auth', 'role:staff-it'])->prefix('staff-it')->group(function
     Route::delete('/akun/{id}/delete', [AkunController::class, 'destroy'])->name('staff-it-akun.delete');
 
     // personil
-    Route::get('/personil', [PersonilController::class, 'index'])->name('staff-it-personil');
+    Route::get('/personil', [PersonilController::class, 'index'])->name('staff-it-personil.index');
+    Route::post('/personil', [PersonilController::class, 'store'])->name('staff-it-personil.post');
+    Route::get('/personil/{id}/edit', [PersonilController::class, 'edit'])->name('staff-it-personil.edit');
+    Route::put('/personil/{id}/update', [PersonilController::class, 'update'])->name('staff-it-personil.update');
+    Route::delete('/personil/{id}/delete', [PersonilController::class, 'destroy'])->name('staff-it-personil.delete');
 
     // senjata api
     Route::resource('senjata-api', WeaponController::class)->names([
@@ -55,7 +60,7 @@ Route::middleware(['auth', 'role:staff-it'])->prefix('staff-it')->group(function
         'destroy' => 'staff-it-senjata-api.destroy',
     ]);
 
-    // senjata api
+    // laporan
     Route::get('/laporan', [LaporanController::class, 'index'])->name('staff-it-laporan');
 });
 

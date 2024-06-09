@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
 
-    public function indexStaffIT()
+    public function indexStaffIT(Request $request)
     {
         return view('staffit.home.index');
     }
