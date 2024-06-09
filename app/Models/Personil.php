@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Personil extends Model
+{
+    use HasFactory;
+
+    protected $table = 'personil';
+    protected $primaryKey = 'id_personil';
+
+    protected $fillable = [
+        'nrp',
+        'nama',
+        'pangkat',
+        'jabatan',
+        'kesatuan',
+        'foto_pribadi',
+    ];
+    public function akun()
+    {
+        return $this->hasOne(Akun::class, 'personil_id', 'id_personil');
+    }
+}

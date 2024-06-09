@@ -41,8 +41,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::is("staff-it-akun") ? "active" : "" }}" aria-current="page"
-                        href="{{ route("staff-it-akun") }}">
+                    <a class="nav-link {{ Route::is("staff-it-akun.index") ? "active" : "" }}" aria-current="page"
+                        href="{{ route("staff-it-akun.index") }}">
                         <i class="icon">
                             <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -101,8 +101,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::is("staff-it-senjata-api.index") ? "active" : "" }}" aria-current="page"
-                        href="{{ route("staff-it-senjata-api.index") }}">
+                    <a class="nav-link {{ Route::is("staff-it-senjata-api.index") ? "active" : "" }}"
+                        aria-current="page" href="{{ route("staff-it-senjata-api.index") }}">
                         <i class="icon">
                             <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">

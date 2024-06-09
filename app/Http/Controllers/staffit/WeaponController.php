@@ -49,11 +49,14 @@ class WeaponController extends Controller
         return redirect()->route('staff-it-senjata-api.index')->with('success', 'Senjata Berhasil diupdate');
     }
 
-    public function destroy(Weapon $weapon)
+    public function destroy(Request $request, $id)
     {
-        $weapon->delete();
+        $weapon = Weapon::find($id);
 
+        if (!$weapon) {
+            return redirect()->route('staff-it-senjata-api.index')->with('error', 'Data tidak ditemukan.');
+        }
+        $weapon->delete();
         return redirect()->route('staff-it-senjata-api.index')->with('success', 'Senjata Berhasil dihapus');
     }
 }
-

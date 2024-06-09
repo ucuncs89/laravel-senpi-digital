@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('akun', function (Blueprint $table) {
             $table->id('id_akun');
+            $table->foreignId('personil_id')->constrained('personil', 'id_personil')->onDelete('cascade');
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->text('password');
-            $table->unsignedBigInteger('personil_id')->nullable();
+            $table->string('password');
             $table->string('role');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
