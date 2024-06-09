@@ -6,16 +6,16 @@
     <div class="content content-inner">
         <div class="section-content">
             <div class="table-responsive">
-                <table id="datatable" class="table table-striped" data-toggle="data-table">
+                <table id="datatable" class="table-striped table" data-toggle="data-table">
                     <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>NRP</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </tr>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>NRP</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
