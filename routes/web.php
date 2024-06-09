@@ -42,6 +42,7 @@ Route::middleware(['auth', 'role:staff-it'])->prefix('staff-it')->group(function
 
     // personil
     Route::get('/personil', [PersonilController::class, 'index'])->name('staff-it-personil');
+    Route::delete('/personil/{id}/delete', [PersonilController::class, 'destroy'])->name('staff-it-personil.delete');
 
     // senjata api
     Route::resource('senjata-api', WeaponController::class)->names([
