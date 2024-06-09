@@ -3,7 +3,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\staffit\AkunController;
+use App\Http\Controllers\staffit\LaporanController;
 use App\Http\Controllers\staffit\PersonilController;
+use App\Http\Controllers\staffit\WeaponController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,19 +31,19 @@ Route::post('/login', [AuthController::class, 'login'])->name('loginPost');
 
 // Staff-IT Routes
 Route::middleware(['auth', 'role:staff-it'])->prefix('staff-it')->group(function () {
-    // route home  
+    // route home
     Route::get('/', [IndexController::class, 'indexStaffIT'])->name('staff-it-index');
-    // akun  
+    // akun
     Route::get('/akun', [AkunController::class, 'index'])->name('staff-it-akun');
     Route::post('/akun', [AkunController::class, 'store'])->name('staff-it-akun-post');
     Route::delete('/akun/delete/{id}', [AkunController::class, 'destroy'])->name('staff-it-akun-delete');
 
-    // personil  
+    // personil
     Route::get('/personil', [PersonilController::class, 'index'])->name('staff-it-personil');
 
-    // senjata api  
-    Route::get('/senjata-api', [IndexController::class, 'weapon'])->name('staff-it-senjata-api');
+    // senjata api
+    Route::get('/senjata-api', [WeaponController::class, 'index'])->name('staff-it-senjata-api');
 
-    // senjata api  
-    Route::get('/laporan', [IndexController::class, 'weapon'])->name('staff-it-laporan');
+    // senjata api
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('staff-it-laporan');
 });
