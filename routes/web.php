@@ -34,9 +34,11 @@ Route::middleware(['auth', 'role:staff-it'])->prefix('staff-it')->group(function
     // route home
     Route::get('/', [IndexController::class, 'indexStaffIT'])->name('staff-it-index');
     // akun
-    Route::get('/akun', [AkunController::class, 'index'])->name('staff-it-akun');
-    Route::post('/akun', [AkunController::class, 'store'])->name('staff-it-akun-post');
-    Route::delete('/akun/delete/{id}', [AkunController::class, 'destroy'])->name('staff-it-akun-delete');
+    Route::get('/akun', [AkunController::class, 'index'])->name('staff-it-akun.index');
+    Route::post('/akun', [AkunController::class, 'store'])->name('staff-it-akun.post');
+    Route::get('/akun/{id}/edit', [AkunController::class, 'edit'])->name('staff-it-akun.edit');
+    Route::put('/akun/{id}/update', [AkunController::class, 'update'])->name('staff-it-akun.update');
+    Route::delete('/akun/{id}/delete', [AkunController::class, 'destroy'])->name('staff-it-akun.delete');
 
     // personil
     Route::get('/personil', [PersonilController::class, 'index'])->name('staff-it-personil');
