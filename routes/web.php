@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\approver\PersetujuanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\staffit\AkunController;
@@ -57,4 +58,12 @@ Route::middleware(['auth', 'role:staff-it'])->prefix('staff-it')->group(function
 
     // senjata api
     Route::get('/laporan', [LaporanController::class, 'index'])->name('staff-it-laporan');
+});
+
+// Approver
+Route::middleware(['auth', 'role:approver'])->prefix('approver')->group(function () {
+    // route home
+    Route::get('/', [IndexController::class, 'indexStaffIT'])->name('approver');
+
+    Route::get('/persetujuan', [PersetujuanController::class, 'Index'])->name('approver');
 });
