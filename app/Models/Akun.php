@@ -25,4 +25,9 @@ class Akun extends Authenticatable
     {
         return $this->belongsTo(Personil::class, 'personil_id', 'id_personil');
     }
+
+    public function hasRole($role)
+    {
+        return $this->role === $role;
+    }
 }
