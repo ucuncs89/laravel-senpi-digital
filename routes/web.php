@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\staffit\AkunController;
+use App\Http\Controllers\staffit\PersonilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('/', [IndexController::class, 'indexStaffIT'])->name('index')->middleware('auth');
 
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -24,13 +26,20 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::post('/login', [AuthController::class, 'login'])->name('loginPost');
 
-Route::get('/staff-it', function () {
-    return 'Staff IT Page';
-})->middleware('role:staff-it');
 
-// Just For Preview UI
-// Admin Routes
-Route::get('/admin',[IndexController::class, 'admin'])->name('index');
-Route::get('/admin/akun',[IndexController::class, 'account'])->name('akun');
-Route::get('/admin/personil',[IndexController::class, 'personil'])->name('personil');
-Route::get('/admin/senjata-api',[IndexController::class, 'weapon'])->name('senjata-api');
+// Staff-IT Routes
+Route::middleware(['auth', 'role:staff-it'])->prefix('staff-it')->group(function () {
+    // route home  
+    Route::get('/', [IndexController::class, 'indexStaffIT'])->name('staff-it-index');
+    // akun  
+    Route::get('/akun', [AkunController::class, 'index'])->name('staff-it-akun');
+
+    // personil  
+    Route::get('/personil', [PersonilController::class, 'index'])->name('staff-it-personil');
+
+    // senjata api  
+    Route::get('/senjata-api', [IndexController::class, 'weapon'])->name('staff-it-senjata-api');
+
+    // senjata api  
+    Route::get('/laporan', [IndexController::class, 'weapon'])->name('staff-it-laporan');
+});

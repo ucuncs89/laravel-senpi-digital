@@ -11,7 +11,7 @@
                 </i>
             </div>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
@@ -19,7 +19,7 @@
                     <span class="navbar-toggler-bar bar2"></span>
                     <span class="navbar-toggler-bar bar3"></span>
                 </span>
-            </button>
+            </button> --}}
             <div class="navbar-collapse collapse" id="navbarSupportedContent">
             </div>
         </div>

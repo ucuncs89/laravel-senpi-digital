@@ -24,7 +24,8 @@
             <!-- Sidebar Menu Start -->
             <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::is('index') ? 'active' : '' }}" aria-current="page" href="{{ route("index") }}">
+                    <a class="nav-link {{ Route::is("index") ? "active" : "" }}" aria-current="page"
+                        href="{{ route("index") }}">
                         <i class="icon">
                             <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                 class="icon-20">
@@ -39,8 +40,9 @@
                         <span class="item-name">Home</span>
                     </a>
                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link {{ Route::is('akun') ? 'active' : '' }}" aria-current="page" href="{{ route("akun") }}">
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::is("staff-it-akun") ? "active" : "" }}" aria-current="page"
+                        href="{{ route("staff-it-akun") }}">
                         <i class="icon">
                             <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -68,8 +70,9 @@
                     </a>
                 </li>
 
-                 <li class="nav-item">
-                    <a class="nav-link {{ Route::is('personil') ? 'active' : '' }}" aria-current="page" href="{{ route("personil") }}">
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::is("staff-it-personil") ? "active" : "" }}" aria-current="page"
+                        href="{{ route("staff-it-personil") }}">
                         <i class="icon">
                             <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -97,9 +100,10 @@
                     </a>
                 </li>
 
-                 <li class="nav-item">
-                    <a class="nav-link {{ Route::is('senjata-api') ? 'active' : '' }}" aria-current="page" href="{{ route("senjata-api") }}">
-                       <i class="icon">
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::is("staff-it-senjata-api") ? "active" : "" }}" aria-current="page"
+                        href="{{ route("staff-it-senjata-api") }}">
+                        <i class="icon">
                             <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -114,9 +118,10 @@
                     </a>
                 </li>
 
-                 <li class="nav-item">
-                    <a class="nav-link {{ Route::is('laporan') ? 'active' : '' }}" aria-current="page" href="{{ route("index") }}">
-                       <i class="icon">
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::is("staff-it-laporan") ? "active" : "" }}" aria-current="page"
+                        href="{{ route("staff-it-laporan") }}">
+                        <i class="icon">
                             <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.4"
@@ -128,6 +133,22 @@
                             </svg>
                         </i>
                         <span class="item-name">Laporan</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::is("logout") ? "active" : "" }}" aria-current="page"
+                        href="{{ route("logout") }}">
+                        <i class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
+                            </svg>
+                        </i>
+                        <span class="item-name">Logout</span>
                     </a>
                 </li>
             </ul>
