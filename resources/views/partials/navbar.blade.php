@@ -26,7 +26,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link d-flex align-items-center py-0" href="#" id="navbarDropdown"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../../assets/images/avatars/01.png" alt="User-Profile"
+                            <img src="{{ auth()->user()->personil->foto_pribadi ? asset(auth()->user()->personil->foto_pribadi) : asset("assets/images/user.png") }}"
+                                alt="User-Profile"
                                 class="theme-color-default-img img-fluid avatar avatar-50 avatar-rounded">
                             <div class="caption d-none d-md-block ms-3">
                                 <h6 class="caption-title mb-0">{{ auth()->user()->personil->nama }}</h6>
@@ -34,7 +35,7 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route("profile") }}">Profile</a></li>
                             <li><a class="dropdown-item" href="{{ route("logout") }}">Logout</a></li>
                         </ul>
                     </li>

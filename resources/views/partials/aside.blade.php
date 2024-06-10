@@ -3,7 +3,8 @@
         <a href="{{ route("index") }}" class="navbar-brand">
             <!--Logo start-->
             <div class="logo">
-                <img id="logoPolice" src="../assets/images/icons/logo.png" data-toggle="sidebar" style="width: 138px" />
+                <img id="logoPolice" src="{{ asset("assets/images/icons/logo.png") }}" data-toggle="sidebar"
+                    style="width: 138px" />
             </div>
             <!--logo End-->
         </a>
@@ -87,7 +88,7 @@
 
                 {{-- User --}}
                 @if (auth()->user()->hasRole("user"))
-                     <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link {{ Route::is("profile") ? "active" : "" }}" aria-current="page"
                             href="{{ route("profile") }}">
                             <i class="bi bi-person-circle"></i>

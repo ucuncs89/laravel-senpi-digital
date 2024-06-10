@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Akun;
+use App\Models\Personil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -55,5 +59,44 @@ class AuthController extends Controller
     public function showRegisterForm()
     {
         return view('auth.register');
+    }
+    public function register(Request $request)
+    {
+        $request->validate([
+            'nrp' => 'required|unique:personil',
+            'nama' => 'required',
+            'pangkat' => 'required',
+            'kesatuan' => 'required',
+            'username' => 'required|unique:akun',
+            'email' => 'required|unique:akun|email',
+            'password' => 'required|min:6',
+        ]);
+        // Memulai transaksi
+        try {
+            DB::transaction(function () use ($request) {
+                $personilData = [
+                    'nrp' => $request->nrp,
+                    'nama' => $request->nama,
+                    'pangkat' => $request->pangkat,
+                    'jabatan' => $request->jabatan,
+                    'kesatuan' => $request->kesatuan,
+                ];
+                $akunData = [
+                    'username' => $request->username,
+                    'password' => Hash::make($request->password),
+                    'email' => $request->email,
+                    'role' => 'user',
+                ];
+
+                $personil = Personil::create($personilData);
+
+                // Buat objek Akun baru dan hubungkan dengan Personil
+                $akun = new Akun($akunData);
+                $personil->akun()->save($akun);
+            });
+            return redirect()->route('login')->with('success', 'Data berhasil disimpan.');
+        } catch (\Throwable $th) {
+            return redirect()->route('register')->with('error', 'Data gagal register.');
+        }
     }
 }
