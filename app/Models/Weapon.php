@@ -17,4 +17,9 @@ class Weapon extends Model
         'nomor',
         'kaliber'
     ];
+
+    public function kartu_pengajuan()
+    {
+        return $this->hasMany(KartuPengajuan::class, 'id_senjata');
+    }
 }
