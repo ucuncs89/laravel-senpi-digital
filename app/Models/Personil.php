@@ -24,4 +24,9 @@ class Personil extends Model
     {
         return $this->hasOne(Akun::class, 'personil_id', 'id_personil');
     }
+
+    public function tes()
+    {
+        return $this->hasMany(Tes::class, 'personil_id');
+    }
 }
