@@ -10,9 +10,9 @@
                     </svg>
                 </i>
             </div>
-            <h3>KARTU SENPI DIGITAL</h3>
+            <h3 class="text-center">KARTU SENPI DIGITAL</h3>
 
-            {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
@@ -20,7 +20,7 @@
                     <span class="navbar-toggler-bar bar2"></span>
                     <span class="navbar-toggler-bar bar3"></span>
                 </span>
-            </button> --}}
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
                     <li class="nav-item dropdown">
