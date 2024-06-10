@@ -30,6 +30,8 @@
                         <span class="item-name">Home</span>
                     </a>
                 </li>
+
+                {{-- Staff It --}}
                 @if (auth()->user()->hasRole("staff-it"))
                     <li class="nav-item">
                         <a class="nav-link {{ Route::is("staff-it-akun.index") ? "active" : "" }}" aria-current="page"
@@ -64,12 +66,40 @@
                     </li>
                 @endif
 
+                {{-- Approver --}}
                 @if (auth()->user()->hasRole("approver"))
                     <li class="nav-item">
                         <a class="nav-link {{ Route::is("approver") ? "active" : "" }}" aria-current="page"
                             href="{{ route("approver") }}">
                             <i class="bi bi-file-earmark"></i>
                             <span class="item-name">Persetujuan</span>
+                        </a>
+                    </li>
+                @endif
+
+                {{-- User --}}
+                @if (auth()->user()->hasRole("user"))
+                     <li class="nav-item">
+                        <a class="nav-link {{ Route::is("profile") ? "active" : "" }}" aria-current="page"
+                            href="{{ route("profile") }}">
+                            <i class="bi bi-person-circle"></i>
+                            <span class="item-name">Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::is("pengajuan") ? "active" : "" }}" aria-current="page"
+                            href="{{ route("pengajuan") }}">
+                            <i class="bi bi-file-arrow-up"></i>
+                            <span class="item-name">Pengajuan</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::is("kartu") ? "active" : "" }}" aria-current="page"
+                            href="{{ route("kartu") }}">
+                            <i class="bi bi-person-vcard"></i>
+                            <span class="item-name">Kartu</span>
                         </a>
                     </li>
                 @endif

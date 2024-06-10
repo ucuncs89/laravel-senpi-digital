@@ -7,6 +7,10 @@ use App\Http\Controllers\staffit\AkunController;
 use App\Http\Controllers\staffit\LaporanController;
 use App\Http\Controllers\staffit\PersonilController;
 use App\Http\Controllers\staffit\WeaponController;
+use App\Http\Controllers\user\KartuController;
+use App\Http\Controllers\user\PengajuanController;
+use App\Http\Controllers\user\ProfileController;
+use App\Http\Controllers\user\UserController;
 use App\Models\Personil;
 use Illuminate\Support\Facades\Route;
 
@@ -72,4 +76,12 @@ Route::middleware(['auth', 'role:approver'])->prefix('approver')->group(function
     Route::get('/', [IndexController::class, 'indexStaffIT'])->name('approver');
 
     Route::get('/persetujuan', [PersetujuanController::class, 'Index'])->name('approver');
+});
+
+// User
+Route::middleware(['auth', 'role:user'])->prefix('user')->group(function (){
+    Route::get('/', [UserController::class, 'Index'])->name('index');
+    Route::get('/profile', [ProfileController::class, 'Index'])->name('profile');
+    Route::get('/pengajuan', [PengajuanController::class, 'Index'])->name('pengajuan');
+    Route::get('/kartu', [KartuController::class, 'Index'])->name('kartu');
 });
