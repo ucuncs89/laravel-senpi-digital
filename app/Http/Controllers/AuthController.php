@@ -51,4 +51,9 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/login');
     }
+
+    public function showRegisterForm()
+    {
+        return view('auth.register');
+    }
 }
