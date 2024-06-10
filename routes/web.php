@@ -7,6 +7,7 @@ use App\Http\Controllers\staffit\AkunController;
 use App\Http\Controllers\staffit\LaporanController;
 use App\Http\Controllers\staffit\PersonilController;
 use App\Http\Controllers\staffit\WeaponController;
+use App\Http\Controllers\staffit\UploadTestController;
 use App\Http\Controllers\user\KartuController;
 use App\Http\Controllers\user\PengajuanController;
 use App\Http\Controllers\user\ProfileController;
@@ -68,6 +69,10 @@ Route::middleware(['auth', 'role:staff-it'])->prefix('staff-it')->group(function
         'update' => 'staff-it-senjata-api.update',
         'destroy' => 'staff-it-senjata-api.destroy',
     ]);
+
+    // Upload Test
+    Route::get('/upload-test', [UploadTestController::class, 'Index'])->name('staff-it-upload-test.index');
+    Route::get('/upload-test/tambah', [UploadTestController::class, 'showFormAdd'])->name('staff-it-upload-test.add');
 
     // laporan
     Route::get('/laporan', [LaporanController::class, 'index'])->name('staff-it-laporan');
