@@ -11,4 +11,9 @@ class KartuController extends Controller
     {
         return view('user.kartu.index');
     }
+
+    public function detail()
+    {
+        return view('user.kartu.detail');
+    }
 }
