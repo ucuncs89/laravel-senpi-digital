@@ -65,7 +65,7 @@
             @include("partials.navbar")
             @yield("content")
         </main>
-        @include("partials.footer")
+        {{-- @include("partials.footer") --}}
 
         <!-- Library Bundle Script -->
         <script src="{{ asset("assets/js/core/libs.min.js") }}"></script>
