@@ -95,6 +95,8 @@ Route::middleware(['auth', 'role:user'])->prefix('user')->group(function () {
 
     // Pengajuan
     Route::get('/pengajuan', [PengajuanController::class, 'Index'])->name('pengajuan');
+    Route::get('/pengajuan/tambah', [PengajuanController::class, 'formPengajuan'])->name('pengajuan.tambah');
+    Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('pengajuan.post');
 
     Route::get('/kartu', [KartuController::class, 'Index'])->name('kartu');
     Route::get('/kartu/{id}/detail', [KartuController::class, 'detail'])->name('kartu-detail');
