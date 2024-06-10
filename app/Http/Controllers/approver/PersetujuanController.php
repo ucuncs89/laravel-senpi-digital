@@ -9,6 +9,6 @@ class PersetujuanController extends Controller
 {
     public function Index(Request $request)
     {
-        return view('approver.index');
+        return view('approver.persetujuan.index');
     }
 }

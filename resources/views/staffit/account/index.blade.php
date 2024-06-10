@@ -64,39 +64,41 @@
                 <form method="POST" action="{{ route("staff-it-akun.post") }}">
                     @csrf
                     <div class="modal-body">
+                        <h3 class="mb-4 text-center">Tambah Data Akun</h3>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="nrp" placeholder="NRP" name="nrp">
+                            <label for="personil_id" class="form-label">Personil<span style="color: red">*</span></label>
+                            <select name="personil_id" id="personil_id" class="form-control" placeholder="Personil">
+                                @foreach ($personilWithoutAkun as $data)
+                                    <option value="{{ $data->id_personil }}">{{ $data->nama }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama">
+                            <label for="username" class="form-label">Username<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="username" placeholder="Username" name="username"
+                                required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="pangkat" placeholder="Pangkat" name="pangkat">
+                            <label for="email" class="form-label">Email<span style="color: red">*</span></label>
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email"
+                                required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="jabatan" placeholder="Jabatan" name="jabatan">
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="kesatuan" placeholder="Kesatuan"
-                                name="kesatuan">
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="username" placeholder="Username"
-                                name="username">
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
-                        </div>
-
-                        <div class="mb-3">
+                            <label for="password" class="form-label">Password<span style="color: red">*</span></label>
                             <input type="password" class="form-control" id="password" placeholder="Password"
                                 name="password">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Role<span style="color: red">*</span></label>
+                            <select name="role" id="role" class="form-control" placeholder="role">
+                                <option value="staff-it">staff-it</option>
+                                <option value="approver">approver</option>
+                                <option value="user">user</option>
+                            </select>
                         </div>
 
                     </div>
@@ -115,40 +117,29 @@
                     @csrf
                     @method("PUT")
                     <div class="modal-body">
+                        <h3 class="mb-4 text-center">Edit Data Akun</h3>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="edit_nrp" placeholder="NRP" name="nrp">
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="edit_nama" placeholder="Nama"
-                                name="nama">
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="edit_pangkat" placeholder="Pangkat"
-                                name="pangkat">
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="edit_jabatan" placeholder="Jabatan"
-                                name="jabatan">
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="edit_kesatuan" placeholder="Kesatuan"
-                                name="kesatuan">
-                        </div>
-
-                        <div class="mb-3">
+                            <label for="username" class="form-label">Username<span style="color: red">*</span></label>
                             <input type="text" class="form-control" id="edit_username" placeholder="Username"
-                                name="username">
+                                name="username" required>
                         </div>
 
                         <div class="mb-3">
+                            <label for="email" class="form-label">Email<span style="color: red">*</span></label>
                             <input type="email" class="form-control" id="edit_email" placeholder="Email"
-                                name="email">
+                                name="email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Role<span style="color: red">*</span></label>
+                            <select name="role" id="edit_role" class="form-control" placeholder="role">
+                                <option value="staff-it">staff-it</option>
+                                <option value="approver">approver</option>
+                                <option value="user">user</option>
+                            </select>
                         </div>
                     </div>
+
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success">Update</button>
                     </div>
@@ -162,13 +153,9 @@
             var id = $(element).data('id');
             $.get("{{ url("staff-it/akun") }}/" + id + "/edit", function(data) {
                 $('#editForm').attr('action', "{{ url("staff-it/akun") }}/" + id + "/update");
-                $('#edit_nrp').val(data.personil.nrp);
-                $('#edit_nama').val(data.personil.nama);
-                $('#edit_pangkat').val(data.personil.pangkat);
-                $('#edit_jabatan').val(data.personil.jabatan);
-                $('#edit_kesatuan').val(data.personil.kesatuan);
                 $('#edit_username').val(data.username);
                 $('#edit_email').val(data.email);
+                $('#edit_role').val(data.role).trigger('change');;
                 $('#editModal').modal('show');
             });
         }
