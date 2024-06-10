@@ -14,7 +14,8 @@ class AkunController extends Controller
     public function Index(Request $request)
     {
         $akun = Akun::with('personil')->get();
-        return view('staffit.account.index', compact('akun'));
+        $personil = Personil::without('akun')->get();
+        return view('staffit.account.index', compact('akun', 'personil'));
     }
     public function store(Request $request)
     {

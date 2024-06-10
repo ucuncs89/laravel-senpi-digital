@@ -64,25 +64,13 @@
                 <form method="POST" action="{{ route("staff-it-akun.post") }}">
                     @csrf
                     <div class="modal-body">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="nrp" placeholder="NRP" name="nrp">
-                        </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama">
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="pangkat" placeholder="Pangkat" name="pangkat">
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="jabatan" placeholder="Jabatan" name="jabatan">
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="kesatuan" placeholder="Kesatuan"
-                                name="kesatuan">
+                            <select name="personil_id" id="personil_id" class="form-control" placeholder="Personil">
+                                @foreach ($personil as $data)
+                                    <option value="{{ $data->id_personil }}">{{ $data->nama }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="mb-3">
@@ -120,8 +108,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="edit_nama" placeholder="Nama"
-                                name="nama">
+                            <input type="text" class="form-control" id="edit_nama" placeholder="Nama" name="nama">
                         </div>
 
                         <div class="mb-3">
