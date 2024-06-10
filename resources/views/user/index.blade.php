@@ -7,10 +7,12 @@
         <section class="section-content-profile">
             <div class="card mb-3">
                 <div class="card-body section-profile-card">
-                    <i class="bi bi-person-circle icon-user"></i>
+                    <img id="image-foto-pribadi" class="mb-3"
+                        src="{{ auth()->user()->personil->foto_pribadi ? asset(auth()->user()->personil->foto_pribadi) : asset("assets/images/user.png") }}"
+                        alt="User" style="max-width: 200px;">
                     <h5 class="mb-3 text-center">{{ auth()->user()->personil->nama }}</h5>
                     <h5 class="mb-4 text-center">{{ auth()->user()->personil->nrp }}</h5>
-                    <button class="btn btn-primary">Profil</button>
+                    <a class="btn btn-primary" href="{{ route("profile") }}">Profil</a>
                 </div>
             </div>
 

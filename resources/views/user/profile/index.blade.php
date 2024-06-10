@@ -5,12 +5,14 @@
 @section("content")
     <div class="content content-inner">
         <section class="section-content-profile">
-            <form>
+            <form method="POST" action="{{ route("profile.update") }}" enctype="multipart/form-data">
+                @csrf
+                @method("PUT")
                 <div class="card mb-3">
                     <div class="card-body section-edit-profile">
-                        <div class="text-center">
+                        <div class="mb-3 text-center">
                             <img id="image-foto-pribadi"
-                                src="{{ auth()->user()->personil->foto_pribadi ? asset("images/foto_pribadi/" . auth()->user()->personil->foto_pribadi) : asset("assets/images/user.png") }}"
+                                src="{{ auth()->user()->personil->foto_pribadi ? asset(auth()->user()->personil->foto_pribadi) : asset("assets/images/user.png") }}"
                                 alt="User" style="max-width: 200px;">
                             <br>
                             <br>

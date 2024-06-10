@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [IndexController::class, 'indexStaffIT'])->name('index')->middleware('auth');
+Route::get('/', [IndexController::class, 'index'])->name('index')->middleware('auth');
 
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -39,6 +39,9 @@ Route::post('/login', [AuthController::class, 'login'])->name('loginPost');
 
 
 Route::post('/register', [AuthController::class, 'register'])->name('registerPost');
+
+Route::get('/profile', [ProfileController::class, 'Index'])->name('profile')->middleware('auth');
+Route::put('/profile', [ProfileController::class, 'Update'])->name('profile.update')->middleware('auth');
 
 
 // Staff-IT Routes
@@ -88,8 +91,7 @@ Route::middleware(['auth', 'role:approver'])->prefix('approver')->group(function
 
 // User
 Route::middleware(['auth', 'role:user'])->prefix('user')->group(function () {
-    Route::get('/', [UserController::class, 'Index'])->name('index');
-    Route::get('/profile', [ProfileController::class, 'Index'])->name('profile');
+    Route::get('/', [UserController::class, 'Index'])->name('user-index');
     Route::get('/pengajuan', [PengajuanController::class, 'Index'])->name('pengajuan');
     Route::get('/kartu', [KartuController::class, 'Index'])->name('kartu');
 });
