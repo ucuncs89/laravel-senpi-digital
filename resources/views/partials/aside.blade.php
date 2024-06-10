@@ -58,6 +58,14 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link {{ Route::is("staff-it-upload-test.index") || Route::is("staff-it-upload-test.add") ? "active" : "" }}"
+                            aria-current="page" href="{{ route("staff-it-upload-test.index") }}">
+                            <i class="bi bi-file-arrow-up"></i>
+                            <span class="item-name">Upload Test</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link {{ Route::is("staff-it-laporan") ? "active" : "" }}" aria-current="page"
                             href="{{ route("staff-it-laporan") }}">
                             <i class="bi bi-file-earmark-bar-graph-fill"></i>
