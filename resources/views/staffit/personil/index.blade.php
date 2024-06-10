@@ -66,25 +66,31 @@
                 <form method="POST" action="{{ route("staff-it-personil.post") }}">
                     @csrf
                     <div class="modal-body">
+                        <h3 class="text-center mb-4">Tambah Data Personil</h3>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="nrp" placeholder="NRP" name="nrp">
+                            <label for="nrp" class="form-label">NRP<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="nrp" placeholder="Masukan NRP" name="nrp" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama">
+                            <label for="nama" class="form-label">Nama<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="nama" placeholder="Masukan Nama" name="nama" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="pangkat" placeholder="Pangkat" name="pangkat">
+                            <label for="pangkat" class="form-label">Pangkat<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="pangkat" placeholder="Masukan Pangkat" name="pangkat" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="jabatan" placeholder="Jabatan" name="jabatan">
+                            <label for="jabatan" class="form-label">Jabatan<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="jabatan" placeholder="Masukan Jabatan" name="jabatan" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="kesatuan" placeholder="Kesatuan"
-                                name="kesatuan">
+                            <label for="kesatuan" class="form-label">Kesatuan<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="kesatuan" placeholder="Masukan Kesatuan"
+                                name="kesatuan" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -102,26 +108,32 @@
                     @csrf
                     @method("PUT")
                     <div class="modal-body">
+                        <h3 class="text-center mb-4">Edit Data Personil</h3>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="edit_nrp" placeholder="NRP" name="nrp">
+                            <label for="edit_nrp" class="form-label">NRP<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="edit_nrp" placeholder="Masukan NRP" name="nrp" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="edit_nama" placeholder="Nama" name="nama">
+                            <label for="edit_nama" class="form-label">Nama<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="edit_nama" placeholder="Masukan Nama" name="nama" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="edit_pangkat" placeholder="Pangkat"
-                                name="pangkat">
+                            <label for="edit_pangkat" class="form-label">Pangkat<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="edit_pangkat" placeholder="Masukan Pangkat"
+                                name="pangkat" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="edit_jabatan" placeholder="Jabatan"
+                            <label for="edit_jabatan" class="form-label">Jabatan<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="edit_jabatan" placeholder="Masukan Jabatan" required
                                 name="jabatan">
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="edit_kesatuan" placeholder="Kesatuan"
+                            <label for="edit_kesatuan" class="form-label">Kesatuan<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="edit_kesatuan" placeholder="Masukan Kesatuan" required
                                 name="kesatuan">
                         </div>
                     </div>

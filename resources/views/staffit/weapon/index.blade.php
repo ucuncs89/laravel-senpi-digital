@@ -52,20 +52,25 @@
                 <form method="POST" action="{{ route('staff-it-senjata-api.store') }}">
                     @csrf
                     <div class="modal-body">
+                        <h3 class="text-center mb-4">Tambah Data Senjata Api</h3>
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="jenis" id="jenis" placeholder="Jenis" required>
+                            <label for="jenis" class="form-label">Jenis<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" name="jenis" id="jenis" placeholder="Masukan Jenis" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="type" id="type" placeholder="Type" required>
+                            <label for="type" class="form-label">Type<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" name="type" id="type" placeholder="Masukan Type" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="nomor" id="nomor" placeholder="Nomor" required>
+                            <label for="nomor" class="form-label">Nomor<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" name="nomor" id="nomor" placeholder="Masukan Nomor" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="kaliber" id="kaliber" placeholder="Kaliber" required>
+                            <label for="kaliber" class="form-label">Kaliber<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" name="kaliber" id="kaliber" placeholder="Masukan Kaliber" required>
                         </div>
 
                     </div>
@@ -86,24 +91,28 @@
                     @method('PUT')
                     <div class="modal-body">
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="jenis" id="editJenis" placeholder="Jenis" required>
+                            <label for="editJenis" class="form-label">Jenis<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" name="jenis" id="editJenis" placeholder="Masukan Jenis" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="type" id="editType" placeholder="Type" required>
+                            <label for="editType" class="form-label">Type<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" name="type" id="editType" placeholder="Masukan Type" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="nomor" id="editNomor" placeholder="Nomor" required>
+                            <label for="editNomor" class="form-label">Nomor<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" name="nomor" id="editNomor" placeholder="Masukan Nomor" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="kaliber" id="editKaliber" placeholder="Kaliber" required>
+                            <label for="editKaliber" class="form-label">Kaliber<span style="color: red">*</span></label>
+                            <input type="text" class="form-control" name="kaliber" id="editKaliber" placeholder="Masukan Kaliber" required>
                         </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Kirim</button>
+                        <button type="submit" class="btn btn-success">Update</button>
                     </div>
                 </form>
             </div>
