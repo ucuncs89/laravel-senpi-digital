@@ -14,47 +14,37 @@ class AkunController extends Controller
     public function Index(Request $request)
     {
         $akun = Akun::with('personil')->get();
-        $personil = Personil::without('akun')->get();
-        return view('staffit.account.index', compact('akun', 'personil'));
+        $personilWithoutAkun = Personil::whereDoesntHave('akun')->get();
+        return view('staffit.account.index', compact('akun', 'personilWithoutAkun'));
     }
     public function store(Request $request)
     {
 
         $request->validate([
-            'nrp' => 'required|unique:personil',
-            'nama' => 'required',
-            'pangkat' => 'required',
-            'kesatuan' => 'required',
             'username' => 'required|unique:akun',
             'email' => 'required|unique:akun|email',
             'password' => 'required|min:6',
+            'role' => 'required',
+            'personil_id' => 'required'
         ]);
         // Memulai transaksi
         try {
             DB::transaction(function () use ($request) {
-                $personilData = [
-                    'nrp' => $request->nrp,
-                    'nama' => $request->nama,
-                    'pangkat' => $request->pangkat,
-                    'jabatan' => $request->jabatan,
-                    'kesatuan' => $request->kesatuan,
-                ];
                 $akunData = [
                     'username' => $request->username,
                     'password' => Hash::make($request->password),
                     'email' => $request->email,
-                    'role' => 'user',
+                    'role' => $request->role,
+                    'personil_id' => $request->personil_id,
                 ];
 
-                $personil = Personil::create($personilData);
 
                 // Buat objek Akun baru dan hubungkan dengan Personil
-                $akun = new Akun($akunData);
-                $personil->akun()->save($akun);
+                Akun::create($akunData);
             });
             return redirect()->route('staff-it-akun.index')->with('success', 'Data berhasil disimpan.');
         } catch (\Throwable $th) {
-            dd($th);
+            return redirect()->route('staff-it-akun.index')->with('error', 'Data gagal disimpan.');
         }
     }
     public function edit($id)
@@ -65,11 +55,6 @@ class AkunController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nrp' => 'required',
-            'nama' => 'required',
-            'pangkat' => 'required',
-            'jabatan' => 'required',
-            'kesatuan' => 'required',
             'username' => 'required',
             'email' => 'required|email',
         ]);
@@ -78,23 +63,13 @@ class AkunController extends Controller
         try {
             DB::transaction(function () use ($request, $id) {
                 // Update data Akun
-                $akun = Akun::with('personil')->find($id);
+                $akun = Akun::findOrFail($id);
                 $akunData = [
                     'username' => $request->username,
                     'email' => $request->email,
                 ];
                 $akun->update($akunData);
                 // Update data Personil setelah akun diperbarui
-                $personilData = [
-                    'nrp' => $request->nrp,
-                    'nama' => $request->nama,
-                    'pangkat' => $request->pangkat,
-                    'jabatan' => $request->jabatan,
-                    'kesatuan' => $request->kesatuan,
-                ];
-
-                $personil = Personil::findOrFail($akun->personil_id);
-                $personil->update($personilData);
             });
             return redirect()->route('staff-it-akun.index')->with('success', 'Data berhasil diupdate.');
         } catch (\Throwable $th) {
@@ -110,8 +85,6 @@ class AkunController extends Controller
             return redirect()->route('staff-it-akun.index')->with('error', 'Data tidak ditemukan.');
         }
 
-        // Hapus data Personil dan Akun terkait
-        $akun->personil()->delete();
         $akun->delete();
 
         return redirect()->route('staff-it-akun.index')->with('success', 'Data berhasil dihapus.');
