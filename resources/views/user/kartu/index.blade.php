@@ -4,114 +4,34 @@
 
 @section("content")
     <div class="content content-inner">
-        <section class="section-content-profile">
-
-            <div class="card-user mb-4">
-                <div class="card-user-header mb-4">
-                    <p class="text-center text-responsive">KEPOLISIAN NEGARA REPUBLIK INDONESIA</p>
-                    <p class="text-center text-responsive">DAERAH JAWA BARAT</p>
-                    <p class="text-center mb-3 text-responsive">RESOR CIANJUR</p>
-                </div>
-
-                <div class="card-user-body">
-                    <h4 class="text-center mb-4 text-responsive">KARTU PEMEGANG SENJATA API DIGITAL</h4>
-
-                    <div class="card-user-body-content">
-                        <div>
-                            <i class="bi bi-person-square card-user-profile"></i>
-                        </div>
-
-                        <div class="card-content-data">
-                            <div class="card-content-data-field text-responsive">
-                                <div class="mb-3">
-                                    <span>Nama:</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>NRP:</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>Pangkat:</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>Jabatan:</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>Kesatuan:</span>
-                                </div>
-                            </div>
-
-                            <div class="card-content-data-field-value text-responsive">
-                                <div class="mb-3">
-                                    <span>Udin</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>000213</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>V1</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>Admin</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>Polri</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-user-footer">
-                        <p class="text-responsive">BERLKAU S/D SELESAI</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-user">
-                <p class="text-center text-responsive">DATA SENJATA API</p>
-
-                <div class="card-user-body">
-
-                    <div class="card-user-body-content">
-
-                        <div class="card-content-data">
-                            <div class="card-content-data-field text-responsive">
-                                <div class="mb-3">
-                                    <span>Nama:</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>NRP:</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>Pangkat:</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>Jabatan:</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>Kesatuan:</span>
-                                </div>
-                            </div>
-
-                            <div class="card-content-data-field-value text-responsive">
-                                <div class="mb-3">
-                                    <span>Udin</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>000213</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>V1</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>Admin</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>Polri</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <section class="section-content">
+            <div class="table-responsive">
+                <table id="datatable" class="table-striped table" data-toggle="data-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>ID Kartu</th>
+                            <th>NRP</th>
+                            <th>Senjata</th>
+                            <th>Personil</th>
+                            <th>Tanggal</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>00920129</td>
+                            <td>093013</td>
+                            <td>AK-47</td>
+                            <td>Satgas</td>
+                            <td>25 Mei 2024</td>
+                            <td>
+                                <a href="{{route("kartu-detail", ['id' => 1])}}" class="text-primary">Detail</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
     </div>
