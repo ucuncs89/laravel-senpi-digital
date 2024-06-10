@@ -15,7 +15,7 @@
                                 </div>
                                 <div class="text-end">
                                     Total Jumlah Akun
-                                    <h2 class="counter">75</h2>
+                                    <h2 class="counter">{{ $count_akun }}</h2>
                                 </div>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="text-end">
                                     Total Jumlah Personil
-                                    <h2 class="counter">75</h2>
+                                    <h2 class="counter">{{ $count_personil }}</h2>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="text-end">
                                     Total Jumlah Senjata
-                                    <h2 class="counter">75</h2>
+                                    <h2 class="counter">{{ $count_weapon }}</h2>
                                 </div>
                             </div>
                         </div>

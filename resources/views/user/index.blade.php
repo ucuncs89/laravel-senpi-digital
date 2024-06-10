@@ -8,8 +8,8 @@
             <div class="card mb-3">
                 <div class="card-body section-profile-card">
                     <i class="bi bi-person-circle icon-user"></i>
-                    <h5 class="text-center mb-3">Kamil Aditya Agustina</h5>
-                    <h5 class="text-center mb-4">000123445</h5>
+                    <h5 class="mb-3 text-center">{{ auth()->user()->personil->nama }}</h5>
+                    <h5 class="mb-4 text-center">{{ auth()->user()->personil->nrp }}</h5>
                     <button class="btn btn-primary">Profil</button>
                 </div>
             </div>
@@ -17,14 +17,18 @@
             <div class="card">
                 <div class="card-body section-profile-card">
                     <i class="bi bi-file-arrow-up" style="font-size: 4rem"></i>
-                    <h5 class="text-center mb-3">Pengajuan/Perpanjang Kartu Pemegang Senpi</h5>
+                    <a href="{{ route("pengajuan") }}">
+                        <h5 class="mb-3 text-center">Pengajuan/Perpanjang Kartu Pemegang Senpi</h5>
+                    </a>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-body section-profile-card">
                     <i class="bi bi-person-vcard" style="font-size: 4rem"></i>
-                    <h5 class="text-center mb-3">Lihat Kartu Pemegang Senpi</h5>
+                    <a href="{{ route("kartu") }}">
+                        <h5 class="mb-3 text-center">Lihat Kartu Pemegang Senpi</h5>
+                    </a>
                 </div>
             </div>
         </section>

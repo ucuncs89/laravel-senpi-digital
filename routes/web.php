@@ -37,6 +37,9 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/login', [AuthController::class, 'login'])->name('loginPost');
 
 
+Route::post('/register', [AuthController::class, 'register'])->name('registerPost');
+
+
 // Staff-IT Routes
 Route::middleware(['auth', 'role:staff-it'])->prefix('staff-it')->group(function () {
     // route home
@@ -79,7 +82,7 @@ Route::middleware(['auth', 'role:approver'])->prefix('approver')->group(function
 });
 
 // User
-Route::middleware(['auth', 'role:user'])->prefix('user')->group(function (){
+Route::middleware(['auth', 'role:user'])->prefix('user')->group(function () {
     Route::get('/', [UserController::class, 'Index'])->name('index');
     Route::get('/profile', [ProfileController::class, 'Index'])->name('profile');
     Route::get('/pengajuan', [PengajuanController::class, 'Index'])->name('pengajuan');
