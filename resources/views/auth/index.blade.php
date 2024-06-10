@@ -28,6 +28,7 @@
                             placeholder="Username or Email" name="username_or_email">
                         <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                         <button class="btn btn-primary" type="submit">Login</button>
+                        <a href="{{route("register")}}" class="btn">Register</a>
                     </div>
                 </section>
             </form>
