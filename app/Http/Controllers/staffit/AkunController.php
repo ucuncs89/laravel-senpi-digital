@@ -39,7 +39,7 @@ class AkunController extends Controller
                 ];
 
 
-                // Buat objek Akun baru dan hubungkan dengan Personil
+                // Buat objek Akun baru
                 Akun::create($akunData);
             });
             return redirect()->route('staff-it-akun.index')->with('success', 'Data berhasil disimpan.');
@@ -69,7 +69,7 @@ class AkunController extends Controller
                     'email' => $request->email,
                 ];
                 $akun->update($akunData);
-                // Update data Personil setelah akun diperbarui
+                // Update data akun diperbarui
             });
             return redirect()->route('staff-it-akun.index')->with('success', 'Data berhasil diupdate.');
         } catch (\Throwable $th) {
@@ -78,7 +78,7 @@ class AkunController extends Controller
     }
     public function destroy($id)
     {
-        // Cari data Personil berdasarkan ID
+        // Cari data Akun berdasarkan ID
         $akun = Akun::find($id);
 
         if (!$akun) {
