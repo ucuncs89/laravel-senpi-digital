@@ -76,6 +76,10 @@ Route::middleware(['auth', 'role:staff-it'])->prefix('staff-it')->group(function
     // Upload Test
     Route::get('/upload-test', [UploadTestController::class, 'Index'])->name('staff-it-upload-test.index');
     Route::get('/upload-test/tambah', [UploadTestController::class, 'showFormAdd'])->name('staff-it-upload-test.add');
+    Route::post('/upload-test/tambah', [UploadTestController::class, 'store'])->name('staff-it-upload-test.post');
+    Route::get('/upload-test/{id}/edit', [UploadTestController::class, 'edit'])->name('staff-it-upload-test.edit');
+    Route::put('/upload-test/{id}/update', [UploadTestController::class, 'update'])->name('staff-it-upload-test.update');
+    Route::delete('/upload-test/{id}/delete', [UploadTestController::class, 'destroy'])->name('staff-it-upload-test.delete');
 
     // laporan
     Route::get('/laporan', [LaporanController::class, 'index'])->name('staff-it-laporan');

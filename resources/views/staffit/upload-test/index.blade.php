@@ -23,13 +23,20 @@
                     <tbody>
                         @foreach ($tes as $data)
                             <tr>
-                                <td>{{ $loop->interation }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $data->nama }}</td>
                                 <td>{{ $data->personil->nrp }}</td>
                                 <td>{{ $data->personil->nama }}</td>
                                 <td>
-                                    <span class="text-warning text-action">Edit</span>
-                                    <span class="btn btn-link text-danger text-action m-0 p-0">Hapus</span>
+                                    <a class="text-warning text-action"
+                                        href="{{ route("staff-it-upload-test.edit", $data->id) }}">Edit</a>
+                                    <form action="{{ route("staff-it-upload-test.delete", $data->id) }}" method="POST"
+                                        style="display:inline-block;">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit"
+                                            class="btn btn-link text-danger text-action m-0 p-0">Hapus</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
