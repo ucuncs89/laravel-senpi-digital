@@ -29,4 +29,9 @@ class Personil extends Model
     {
         return $this->hasMany(Tes::class, 'personil_id');
     }
+
+    public function kartu_pengajuan()
+    {
+        return $this->hasMany(KartuPengajuan::class, 'id_personil');
+    }
 }
