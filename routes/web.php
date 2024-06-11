@@ -88,9 +88,10 @@ Route::middleware(['auth', 'role:staff-it'])->prefix('staff-it')->group(function
 // Approver
 Route::middleware(['auth', 'role:approver'])->prefix('approver')->group(function () {
     // route home
-    Route::get('/', [IndexController::class, 'indexStaffIT'])->name('approver');
+    Route::get('/', [IndexController::class, 'indexStaffIT'])->name('approver-index');
 
-    Route::get('/persetujuan', [PersetujuanController::class, 'Index'])->name('approver');
+    Route::get('/persetujuan', [PersetujuanController::class, 'Index'])->name('approver-persetujuan.index');
+    Route::get('/persetujuan/setuju/{id}', [PersetujuanController::class, 'setuju'])->name('approver-persetujuan.setuju');
 });
 
 // User

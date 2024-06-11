@@ -19,18 +19,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Asep</td>
-                            <td>00123456</td>
-                            <td>Kanit 4 Reskrim</td>
-                            <td>Pistol</td>
-                            <td>HS</td>
-                            <td>
-                                <span data-bs-toggle="modal" data-bs-target="#modalPreview" class="text-warning text-action">Lihat</span>
-                                <span class="text-danger text-action" data-bs-toggle="modal" data-bs-target="#modalReject">Tolak</span>
-                            </td>
-                        </tr>
+                        @foreach ($listKartu as $data)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $data->personil->nama }}</td>
+                                <td>{{ $data->personil->nrp }}</td>
+                                <td>{{ $data->personil->jabatan }}</td>
+                                <td>{{ $data->senjata->jenis }}</td>
+                                <td>{{ $data->senjata->type }}</td>
+                                <td>
+                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalPreview"
+                                        class="text-warning text-action" data-id="{{ $data }}"
+                                        onclick="previewPersetujuan(this)">Lihat</a>
+                                    <span class="text-danger text-action" data-bs-toggle="modal"
+                                        data-bs-target="#modalReject">Tolak</span>
+                                </td>
+                            </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>
@@ -44,7 +50,9 @@
                     @csrf
                     <div class="modal-body">
                         <h4 class="mb-4">Tolak Persetujuan</h4>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio vero velit nostrum illum, totam mollitia ad ea voluptates necessitatibus nam voluptas deleniti delectus eligendi quidem doloremque! Perspiciatis laborum voluptatum nihil!</p>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio vero velit nostrum illum,
+                            totam mollitia ad ea voluptates necessitatibus nam voluptas deleniti delectus eligendi quidem
+                            doloremque! Perspiciatis laborum voluptatum nihil!</p>
                     </div>
 
                     <div class="modal-footer">
@@ -59,55 +67,91 @@
     <div class="modal fade" id="modalPreview" tabindex="-1" aria-labelledby="modalPreviewLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-preview">
             <div class="modal-content">
-                <form method="POST">
+                <form id="previewForm" method="POST">
                     @csrf
+                    @method("put")
                     <div class="modal-body">
                         <h4>Persetujuan</h4>
+
                         <div class="approver-form-wrap">
                             <div class="approver-form-item">
                                 <p class="mb-3">Data Diri</p>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" disabled>
+                                    <input type="text" class="form-control" name="nama" id="nama"
+                                        placeholder="Nama" disabled>
                                 </div>
 
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="nrp" id="nrp" placeholder="NRP" disabled>
+                                    <input type="text" class="form-control" name="nrp" id="nrp"
+                                        placeholder="NRP" disabled>
                                 </div>
 
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="Jabatan" disabled>
+                                    <input type="text" class="form-control" name="jabatan" id="jabatan"
+                                        placeholder="Jabatan" disabled>
                                 </div>
                             </div>
 
                             <div class="approver-form-item">
                                 <p class="mb-3">Data Senjata Api</p>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="jenis" id="jenis" placeholder="Jenis" disabled>
+                                    <input type="text" class="form-control" name="jenis" id="jenis"
+                                        placeholder="Jenis" disabled>
                                 </div>
 
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="type" id="type" placeholder="Type" disabled>
+                                    <input type="text" class="form-control" name="type" id="type"
+                                        placeholder="Type" disabled>
                                 </div>
 
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="kaliber" id="kaliber" placeholder="Kaliber" disabled>
+                                    <input type="text" class="form-control" name="kaliber" id="kaliber"
+                                        placeholder="Kaliber" disabled>
                                 </div>
                             </div>
 
                         </div>
 
                         <div class="approver-preview-file">
-                            <div class="approver-preview-file-item"></div>
-                            <div class="approver-preview-file-item"></div>
-                            <div class="approver-preview-file-item"></div>
+                            <a id="view-file-kesehatan" href="#" target="_blank">View File Kesehatan</a>
+                            <a id="view-file-psikologi" href="#" target="_blank">View File Kesehatan</a>
+                            <a id="view-file-menembak" href="#" target="_blank">View File Kesehatan</a>
                         </div>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Kembali</button>
-                        <button type="submit" class="btn btn-success">Setuju</button>
+                        <a class="btn btn-success" id="link-setuju">Setuju</a>
                     </div>
                 </form>
             </div>
         </div>
-@endsection
+
+        <script>
+            function previewPersetujuan(element) {
+                const dataId = element.getAttribute('data-id');
+                const data = JSON.parse(dataId);
+                $('#nama').val(data.personil.nama);
+                $('#nrp').val(data.personil.nrp);
+                $('#jabatan').val(data.personil.jabatan);
+                $('#jenis').val(data.senjata.jenis);
+                $('#type').val(data.senjata.kaliber);
+                $('#jenis').val(data.senjata.kaliber);
+                $('#view-file-kesehatan').attr('href', `/${data.tes.hasil_kesehatan}`);
+                $('#view-file-psikologi').attr('href', `/${data.tes.hasil_psikologi}`);
+                $('#view-file-menembak').attr('href', `/${data.tes.hasil_menembak}`);
+                $('#link-setuju').attr('href', `/approver/persetujuan/setuju/${data.id}`);
+            }
+
+            function tolakPersetujuan(id) {
+                // const dataId = element.getAttribute('data-id');
+                // const data = JSON.parse(dataId);
+                // $('#nama').val(data.personil.nama);
+                // $('#nrp').val(data.personil.nrp);
+                // $('#jabatan').val(data.personil.jabatan);
+                // $('#jenis').val(data.senjata.jenis);
+                // $('#type').val(data.senjata.kaliber);
+                // $('#jenis').val(data.senjata.kaliber);
+            }
+        </script>
+    @endsection
