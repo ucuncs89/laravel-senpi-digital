@@ -78,8 +78,8 @@
                 {{-- Approver --}}
                 @if (auth()->user()->hasRole("approver"))
                     <li class="nav-item">
-                        <a class="nav-link {{ Route::is("approver") ? "active" : "" }}" aria-current="page"
-                            href="{{ route("approver") }}">
+                        <a class="nav-link {{ Route::is("approver-persetujuan.index") ? "active" : "" }}"
+                            aria-current="page" href="{{ route("approver-persetujuan.index") }}">
                             <i class="bi bi-file-earmark"></i>
                             <span class="item-name">Persetujuan</span>
                         </a>

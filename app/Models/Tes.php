@@ -13,7 +13,7 @@ class Tes extends Model
 
     protected $fillable = [
         'nama',
-        'personil_id',
+        'id_personil',
         'hasil_kesehatan',
         'hasil_psikologi',
         'hasil_menembak',
@@ -21,6 +21,6 @@ class Tes extends Model
 
     public function personil()
     {
-        return $this->belongsTo(Personil::class, 'personil_id');
+        return $this->belongsTo(Personil::class, 'id_personil');
     }
 }

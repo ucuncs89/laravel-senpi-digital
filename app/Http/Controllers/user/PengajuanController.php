@@ -44,7 +44,6 @@ class PengajuanController extends Controller
         $tanggalPengajuan = now();
 
         $status = "Pending";
-        $statusDescription = 'Menunggu persetujuan';
 
         $berlakuSampaiDengan = now()->addMonth();
 
@@ -54,10 +53,10 @@ class PengajuanController extends Controller
             'id_personil' => $user->personil_id,
             'id_senjata' => $arrayData['id'],
             'status' => $status,
-            'status_description' => $statusDescription,
             'berlaku_sampai_dengan' => $berlakuSampaiDengan,
             'tanggal_update' => now(),
             'update_by' => $user->id,
+            'tes_id' => $request->test_id
         ]);
 
         $kartuPengajuan->save();

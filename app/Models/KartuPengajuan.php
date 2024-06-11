@@ -22,6 +22,8 @@ class KartuPengajuan extends Model
         'berlaku_sampai_dengan',
         'tanggal_update',
         'update_by',
+        'tes_id',
+        'kode_kartu'
     ];
 
     public function personil()
@@ -32,5 +34,10 @@ class KartuPengajuan extends Model
     public function senjata()
     {
         return $this->belongsTo(Weapon::class, 'id_senjata');
+    }
+
+    public function tes()
+    {
+        return $this->belongsTo(Tes::class, 'tes_id');
     }
 }

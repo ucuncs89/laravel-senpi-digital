@@ -16,48 +16,52 @@
             <div class="mb-3 text-center">
                 <h4>Tambah Test</h4>
             </div>
-            <form action="{{ route("staff-it-upload-test.post") }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route("staff-it-upload-test.update", $tes->id) }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
+                @method("PUT")
                 <div class="mb-3">
                     <label for="nama" class="form-label">Nama Test<span style="color: red">*</span></label>
                     <input class="form-control" type="text" id="nama" name="nama" placeholder="Masukan Nama Test"
-                        required>
+                        required value="{{ $tes->nama }}">
                 </div>
 
                 <div class="mb-3">
                     <label for="id_personil" class="form-label">Personil<span style="color: red">*</span></label>
                     <select name="id_personil" id="id_personil" class="form-control">
                         @foreach ($personil as $data)
-                            <option value="{{ $data->id_personil }}">{{ $data->nrp }} - {{ $data->nama }}</option>
+                            <option value="{{ $data->id_personil }}"
+                                {{ $data->id_personil == $tes->id_personil ? "selected" : "" }}>
+                                {{ $data->nrp }} -{{ $data->nama }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="row">
                     <div class="col-4">
                         <div class="mb-3">
-                            <label for="test-kesehatan" class="form-label">Hasil Tes Kesehatan<span
-                                    style="color: red">*</span></label>
-                            <input class="form-control mb-3" type="file" id="tes_kesehatan" name="tes_kesehatan" required
+                            <label for="test-kesehatan" class="form-label">Hasil Tes Kesehatan</label>
+                            <input class="form-control mb-3" type="file" id="tes_kesehatan" name="tes_kesehatan"
                                 onchange="updateFileLink('test-kesehatan', 'view-file-kesehatan')">
-                            <a id="view-file-kesehatan" href="#" target="_blank"></a>
+                            <a id="view-file-menembak" href="{{ asset($tes->hasil_kesehatan) }}" target="_blank">View
+                                File</a>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
-                            <label for="test-psikologi" class="form-label">Hasil Tes Psikologi<span
-                                    style="color: red">*</span></label>
-                            <input class="form-control mb-3" type="file" id="tes_psikologi" name="tes_psikologi" required
+                            <label for="test-psikologi" class="form-label">Hasil Tes Psikologi</label>
+                            <input class="form-control mb-3" type="file" id="tes_psikologi" name="tes_psikologi"
                                 onchange="updateFileLink('test-psikologi', 'view-file-psikologi')">
-                            <a id="view-file-psikologi" href="#" target="_blank"></a>
+                            <a id="view-file-menembak" href="{{ asset($tes->hasil_psikologi) }}" target="_blank">View
+                                File</a>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="mb-3">
-                            <label for="test-menembak" class="form-label">Hasil Tes Menembak<span
-                                    style="color: red">*</span></label>
-                            <input class="form-control mb-3" type="file" id="tes_menembak" name="tes_menembak" required
+                            <label for="test-menembak" class="form-label">Hasil Tes Menembak</label>
+                            <input class="form-control mb-3" type="file" id="tes_menembak" name="tes_menembak"
                                 onchange="updateFileLink('test-menembak', 'view-file-menembak')">
-                            <a id="view-file-menembak" href="#" target="_blank"></a>
+                            <a id="view-file-menembak" href="{{ asset($tes->hasil_menembak) }}" target="_blank">View
+                                File</a>
                         </div>
                     </div>
                 </div>
