@@ -41,4 +41,31 @@ class PersetujuanController extends Controller
             return redirect()->route('approver-persetujuan.index')->with('error', 'Data gagal diupdate.');
         }
     }
+
+    public function reject(Request $request)
+    {
+        $request->validate([
+            'reject_id'=>'required',
+            'rejectMessage'=>'required',
+        ]);
+
+        $kartuId = $request->input('reject_id');
+        $msg = $request->input('rejectMessage');
+        $user = Auth::user();
+        $kartu = KartuPengajuan::findOrFail($kartuId);
+
+        $kartuData = [
+            'status' => 'Ditolak',
+            'status_description' => $msg,
+            'tanggal_update' => now(),
+            'update_by' => $user->id,
+        ];
+
+        try {
+            $kartu->update($kartuData);
+            return redirect()->route('approver-persetujuan.index')->with('success', 'Data berhasil diupdate.');
+        } catch (\Throwable $th) {
+            return redirect()->route('approver-persetujuan.index')->with('error', 'Data gagal diupdate.');
+        }
+    }
 }
