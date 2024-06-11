@@ -31,7 +31,7 @@
                                     <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalPreview"
                                         class="text-warning text-action" data-id="{{ $data }}"
                                         onclick="previewPersetujuan(this)">Lihat</a>
-                                    <span class="text-danger text-action" data-bs-toggle="modal"
+                                    <span onclick="tolakPersetujuan(this)" class="text-danger text-action" data-reject={{$data->id}} data-bs-toggle="modal"
                                         data-bs-target="#modalReject">Tolak</span>
                                 </td>
                             </tr>
@@ -46,17 +46,22 @@
     <div class="modal fade" id="modalReject" tabindex="-1" aria-labelledby="modalRejectLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form method="POST">
+                <form method="POST" action="{{ route('approver-persetujuan.reject') }}">
                     @csrf
                     <div class="modal-body">
                         <h4 class="mb-4">Tolak Persetujuan</h4>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio vero velit nostrum illum,
-                            totam mollitia ad ea voluptates necessitatibus nam voluptas deleniti delectus eligendi quidem
-                            doloremque! Perspiciatis laborum voluptatum nihil!</p>
+                        <div>
+                            <input style="display: none" id="reject_id" name="reject_id" />
+                        </div>
+                        <div class="form-floating">
+                            <textarea class="form-control" name="rejectMessage" placeholder="Masukan Alasan" id="rejectMessage" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Alasan</label>
+                        </div>
+
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kirim</button>
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Kirim</button>
                     </div>
                 </form>
             </div>
@@ -143,15 +148,9 @@
                 $('#link-setuju').attr('href', `/approver/persetujuan/setuju/${data.id}`);
             }
 
-            function tolakPersetujuan(id) {
-                // const dataId = element.getAttribute('data-id');
-                // const data = JSON.parse(dataId);
-                // $('#nama').val(data.personil.nama);
-                // $('#nrp').val(data.personil.nrp);
-                // $('#jabatan').val(data.personil.jabatan);
-                // $('#jenis').val(data.senjata.jenis);
-                // $('#type').val(data.senjata.kaliber);
-                // $('#jenis').val(data.senjata.kaliber);
+            function tolakPersetujuan(element) {
+                const dataId = element.getAttribute('data-reject');
+                $('#reject_id').val(dataId)
             }
         </script>
     @endsection

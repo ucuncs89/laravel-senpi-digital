@@ -92,6 +92,7 @@ Route::middleware(['auth', 'role:approver'])->prefix('approver')->group(function
 
     Route::get('/persetujuan', [PersetujuanController::class, 'Index'])->name('approver-persetujuan.index');
     Route::get('/persetujuan/setuju/{id}', [PersetujuanController::class, 'setuju'])->name('approver-persetujuan.setuju');
+    Route::post('/persetujuan/tolak', [PersetujuanController::class, 'reject'])->name('approver-persetujuan.reject');
 });
 
 // User
