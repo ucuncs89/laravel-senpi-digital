@@ -26,7 +26,11 @@
                                 <td>{{ $persetujuan->kode_kartu }}</td>
                                 <td>{{ $persetujuan->tanggal_pengajuan }}</td>
                                 <td>Pistol</td>
-                                <td>{{ $persetujuan->status_description }}</td>
+                                <td>
+                                    <span class="{{ $persetujuan->status === "Pending" ? "badge text-bg-warning" : ($persetujuan->status === "Ditolak" ? 'badge text-bg-danger' : 'badge text-bg-success') }}">
+                                        {{ $persetujuan->status }}
+                                    </span>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

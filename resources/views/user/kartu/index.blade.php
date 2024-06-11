@@ -19,17 +19,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>00920129</td>
-                            <td>093013</td>
-                            <td>AK-47</td>
-                            <td>Satgas</td>
-                            <td>25 Mei 2024</td>
-                            <td>
-                                <a href="{{route("kartu-detail", ['id' => 1])}}" class="text-primary">Detail</a>
-                            </td>
-                        </tr>
+                        @foreach ($cards as $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->kode_kartu }}</td>
+                                <td>{{ $item->nrp}}</td>
+                                <td>{{ $item->jenis }}</td>
+                                <td>{{ $item->jabatan }}</td>
+                                <td>{{ $item->tanggal_update }}</td>
+                                <td>
+                                    <a href="{{ route("kartu-detail", ['id' => $item->id]) }}" class="text-primary">Detail</a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

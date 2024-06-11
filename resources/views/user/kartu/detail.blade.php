@@ -45,19 +45,19 @@
 
                             <div class="card-content-data-field-value text-responsive">
                                 <div class="mb-3">
-                                    <span>Udin</span>
+                                    <span>{{$card->nama ?? "-"}}</span>
                                 </div>
                                 <div class="mb-3">
-                                    <span>000213</span>
+                                    <span>{{ $card->nrp ?? "-" }}</span>
                                 </div>
                                 <div class="mb-3">
-                                    <span>V1</span>
+                                    <span>{{ $card->pangkat ?? "-" }}</span>
                                 </div>
                                 <div class="mb-3">
-                                    <span>Admin</span>
+                                    <span>{{ $card->jabatan ?? "-" }}</span>
                                 </div>
                                 <div class="mb-3">
-                                    <span>Polri</span>
+                                    <span>{{ $card->kesatuan ?? "-"}}</span>
                                 </div>
                             </div>
                         </div>
@@ -94,16 +94,16 @@
 
                             <div class="card-content-data-field-value text-responsive">
                                 <div class="mb-3">
-                                    <span>AK-47</span>
+                                    <span>{{ $card->jenis ?? "-" }}</span>
                                 </div>
                                 <div class="mb-3">
-                                    <span>000213</span>
+                                    <span>{{ $card->type ?? "-" }}</span>
                                 </div>
                                 <div class="mb-3">
-                                    <span>009303</span>
+                                    <span>{{ $card->nomor ?? "-" }}</span>
                                 </div>
                                 <div class="mb-3">
-                                    <span>0,9mm</span>
+                                    <span>{{ $card->kaliber ?? "-" }}</span>
                                 </div>
                             </div>
                         </div>

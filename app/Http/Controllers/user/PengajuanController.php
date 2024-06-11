@@ -43,7 +43,7 @@ class PengajuanController extends Controller
 
         $tanggalPengajuan = now();
 
-        $status = "pending";
+        $status = "Pending";
         $statusDescription = 'Menunggu persetujuan';
 
         $berlakuSampaiDengan = now()->addMonth();
