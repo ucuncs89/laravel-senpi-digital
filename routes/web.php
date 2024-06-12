@@ -83,6 +83,7 @@ Route::middleware(['auth', 'role:staff-it'])->prefix('staff-it')->group(function
 
     // laporan
     Route::get('/laporan', [LaporanController::class, 'index'])->name('staff-it-laporan');
+    Route::get('/cetak-laporan', [LaporanController::class, 'generateReport'])->name('staff-it-cetak-laporan');
 });
 
 // Approver
