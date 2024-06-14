@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use PhpParser\Node\Expr\Cast\Object_;
+use stdClass;
 
 class AuthController extends Controller
 {
@@ -73,7 +75,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'nrp' => 'required|unique:personil',
+            'nrp' => 'required',
             'nama' => 'required',
             'pangkat' => 'required',
             'kesatuan' => 'required',
@@ -84,29 +86,79 @@ class AuthController extends Controller
         // Memulai transaksi
         try {
             DB::transaction(function () use ($request) {
-                $personilData = [
-                    'nrp' => $request->nrp,
-                    'nama' => $request->nama,
-                    'pangkat' => $request->pangkat,
-                    'jabatan' => $request->jabatan,
-                    'kesatuan' => $request->kesatuan,
-                ];
-                $akunData = [
-                    'username' => $request->username,
-                    'password' => Hash::make($request->password),
-                    'email' => $request->email,
-                    'role' => 'user',
-                ];
+                $personil = Personil::where('nrp', $request->nrp)->first();
+                if ($personil) {
+                    $personilData = [
+                        'nrp' => $request->nrp,
+                        'nama' => $request->nama,
+                        'pangkat' => $request->pangkat,
+                        'jabatan' => $request->jabatan,
+                        'kesatuan' => $request->kesatuan,
+                    ];
 
-                $personil = Personil::create($personilData);
+                    $personil = Personil::findOrFail($personil->id_personil);
+                    $personil->update($personilData);
+                    $akunData = [
+                        'username' => $request->username,
+                        'password' => Hash::make($request->password),
+                        'email' => $request->email,
+                        'role' => 'user',
+                        'personil_id' => $personil->id_personil,
+                    ];
 
-                // Buat objek Akun baru dan hubungkan dengan Personil
-                $akun = new Akun($akunData);
-                $personil->akun()->save($akun);
+
+                    // Buat objek Akun baru
+                    Akun::create($akunData);
+
+                } else {
+                    $personilData = [
+                        'nrp' => $request->nrp,
+                        'nama' => $request->nama,
+                        'pangkat' => $request->pangkat,
+                        'jabatan' => $request->jabatan,
+                        'kesatuan' => $request->kesatuan,
+                    ];
+                    $akunData = [
+                        'username' => $request->username,
+                        'password' => Hash::make($request->password),
+                        'email' => $request->email,
+                        'role' => 'user',
+                    ];
+
+                    $personil = Personil::create($personilData);
+
+                    // Buat objek Akun baru dan hubungkan dengan Personil
+                    $akun = new Akun($akunData);
+                    $personil->akun()->save($akun);
+                }
             });
             return redirect()->route('login')->with('success', 'Data berhasil disimpan.');
         } catch (\Throwable $th) {
+            dd($th);
             return redirect()->route('register')->with('error', 'Data gagal register.');
         }
+    }
+
+    public function searchNrp(Request $request)
+    {
+        $nrp = $request->input("nrp");
+
+        // Retrieve the first personil along with their akun based on the nrp
+        $personil = Personil::with('akun')
+                    ->where('nrp', $nrp)
+                    ->first();
+
+        $response = new stdClass();
+        $response->data = $personil;
+
+        // Check if the personil exists
+        if (!$personil) {
+            $response->can_register = true;
+        } else {
+            // Check if the personil has an associated akun
+            $response->can_register = $personil->akun === null;
+        }
+
+        return response()->json($response);
     }
 }
