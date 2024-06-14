@@ -39,6 +39,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('loginPost');
 
 
 Route::post('/register', [AuthController::class, 'register'])->name('registerPost');
+Route::get('/search-nrp', [AuthController::class, 'searchNrp'])->name('search-nrp');
 
 Route::get('/forgot-password', [AuthController::class, 'showCheckEmailForm'])->name('forgot-password');
 Route::get('/forgot-password/change-password', [AuthController::class, 'showChangePasswordForm'])->name('forgot-password.change-password');
