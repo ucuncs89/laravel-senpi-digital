@@ -60,6 +60,16 @@ class AuthController extends Controller
     {
         return view('auth.register');
     }
+
+    public function showCheckEmailForm()
+    {
+        return view('auth.email-forgot-password');
+    }
+
+    public function showChangePasswordForm()
+    {
+        return view('auth.change-password');
+    }
     public function register(Request $request)
     {
         $request->validate([
