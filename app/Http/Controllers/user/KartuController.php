@@ -47,6 +47,7 @@ class KartuController extends Controller
                 'kartu_pengajuan.kode_kartu',
                 'kartu_pengajuan.tanggal_update',
                 'kartu_pengajuan.status',
+                'kartu_pengajuan.berlaku_sampai_dengan',
                 'personil.id_personil',
                 'personil.nrp',
                 'personil.nama',

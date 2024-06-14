@@ -1,8 +1,6 @@
 .card-login {
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    align-items: center;
     width: 100%;
 }
 
@@ -36,6 +34,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.wrapper-nrp {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.wrapper-nrp-input {
+    width: 100%;
+}
+
+.wrapper-nrp-btn .btn {
+    margin-top: 0px !important;
 }
 
 @media (max-width: 767.98px) {
