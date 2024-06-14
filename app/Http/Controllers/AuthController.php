@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -107,6 +108,48 @@ class AuthController extends Controller
             return redirect()->route('login')->with('success', 'Data berhasil disimpan.');
         } catch (\Throwable $th) {
             return redirect()->route('register')->with('error', 'Data gagal register.');
+        }
+    }
+    public function sendEmailForgot(Request $request)
+    {
+        $email = $request->input('email'); // Get the email from the request
+
+        // Find the first Akun where email matches the given email
+        $akun = Akun::where('email', $email)->first();
+        if (!$akun) {
+            return redirect()->route('forgot-password')->with('error', 'Data Akun Tidak Ada');
+        }
+        $id_akun = base64_encode($akun->id_akun);
+        $mjApiKeyPublic = "d4c596d23bfb249d2e8f11d8e35d7fe7";
+        $mjApiKeyPrivate = "241b83dc27da35a52580cc225eb83a65";
+        $senderEmail = "ilham@ucun.dev";
+        $recipientEmail = $email;
+        $resetLink = url("/forgot-password/change-password?id_akun=$id_akun");
+
+        $response = Http::withBasicAuth($mjApiKeyPublic, $mjApiKeyPrivate)
+            ->post('https://api.mailjet.com/v3.1/send', [
+                'Messages' => [
+                    [
+                        'From' => [
+                            'Email' => $senderEmail,
+                            'Name' => 'Support Team'
+                        ],
+                        'To' => [
+                            [
+                                'Email' => $recipientEmail,
+                                'Name' => 'User'
+                            ]
+                        ],
+                        'Subject' => 'Password Reset Request',
+                        'TextPart' => "Hello, It seems like you requested a password reset. If this was you, please use the following link to reset your password: $resetLink",
+                        'HTMLPart' => "<h3>Hello,</h3><p>It seems like you requested a password reset. If this was you, please use the following link to reset your password:</p><p><a href=\"$resetLink\">Reset Password</a></p><p>If you did not request a password reset, please ignore this email.</p><br />Best regards,<br />Support Team"
+                    ]
+                ]
+            ]);
+        if ($response->successful()) {
+            return redirect()->route('forgot-password')->with('success', 'Password reset email sent successfully.');
+        } else {
+            return redirect()->route('forgot-password')->with('error', 'Failed to send password reset email. try again');
         }
     }
 }
