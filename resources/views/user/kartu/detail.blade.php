@@ -8,19 +8,17 @@
 
             <div class="card-user mb-4">
                 <div class="card-user-header mb-4">
-                    <p class="text-center text-responsive">KEPOLISIAN NEGARA REPUBLIK INDONESIA</p>
-                    <p class="text-center text-responsive">DAERAH JAWA BARAT</p>
-                    <p class="text-center mb-3 text-responsive">RESOR CIANJUR</p>
+                    <p class="text-responsive text-center">KEPOLISIAN NEGARA REPUBLIK INDONESIA</p>
+                    <p class="text-responsive text-center">DAERAH JAWA BARAT</p>
+                    <p class="text-responsive mb-3 text-center">RESOR CIANJUR</p>
                 </div>
 
                 <div class="card-user-body">
-                    <h4 class="text-center mb-4 text-responsive">KARTU PEMEGANG SENJATA API DIGITAL</h4>
+                    <h4 class="text-responsive mb-4 text-center">KARTU PEMEGANG SENJATA API DIGITAL</h4>
 
                     <div class="card-user-body-content">
                         <div>
-                            <img id="image-foto-pribadi"
-                                class="card-user-profile"
-                                src="{{asset("assets/images/user.png") }}"
+                            <img id="image-foto-pribadi" class="card-user-profile" src="{{ asset($card->foto_pribadi) }}"
                                 alt="User">
                         </div>
 
@@ -45,7 +43,7 @@
 
                             <div class="card-content-data-field-value text-responsive">
                                 <div class="mb-3">
-                                    <span>{{$card->nama ?? "-"}}</span>
+                                    <span>{{ $card->nama ?? "-" }}</span>
                                 </div>
                                 <div class="mb-3">
                                     <span>{{ $card->nrp ?? "-" }}</span>
@@ -57,20 +55,20 @@
                                     <span>{{ $card->jabatan ?? "-" }}</span>
                                 </div>
                                 <div class="mb-3">
-                                    <span>{{ $card->kesatuan ?? "-"}}</span>
+                                    <span>{{ $card->kesatuan ?? "-" }}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="card-user-footer">
-                        <p class="text-responsive">BERLKAU S/D SELESAI</p>
+                        <p class="text-responsive">BERLKAU S/D {{ $card->berlaku_sampai_dengan }}</p>
                     </div>
                 </div>
             </div>
 
             <div class="card-user">
-                <p class="text-center text-responsive">DATA SENJATA API</p>
+                <p class="text-responsive text-center">DATA SENJATA API</p>
 
                 <div class="card-user-body">
 
