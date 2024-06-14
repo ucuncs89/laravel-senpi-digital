@@ -30,10 +30,23 @@
             th {
                 background-color: #f2f2f2;
             }
+
+            .section-kop-surat {
+                text-align: center;
+                border-bottom: 1px solid #000;
+                width: 100%;
+                padding: 0px 10px;
+            }
         </style>
     </head>
 
     <body>
+        <section class="section-kop-surat">
+            <p>KEPOLISIAN NEGARA REBUBLIK</p>
+            <p>INDONESIA</p>
+            <p>DAERAH JAWA BARAT</p>
+            <p>RESOR CIANJUR</p>
+        </section>
         <h2>{{ $title }}</h2>
         <p>Periode: {{ $start_date }} sampai {{ $end_date }}</p>
 

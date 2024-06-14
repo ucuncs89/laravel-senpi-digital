@@ -17,94 +17,109 @@
                     <h4 class="text-responsive mb-4 text-center">KARTU PEMEGANG SENJATA API DIGITAL</h4>
 
                     <div class="card-user-body-content">
-                        <div>
-                            <img id="image-foto-pribadi" class="card-user-profile" src="{{ asset($card->foto_pribadi) }}"
+                        <div class="card-logo-wrapper">
+                            <div class="card-logo-wrapper-polri">
+                                <img id="image" class="card-user-polri" src="{{ asset('assets/images/logo-polri.png') }}"
+                                    alt="Polri">
+                            </div>
+                            <img id="image-foto-pribadi" class="card-user-profile" src="{{ asset($card->foto_pribadi ? $card->foto_pribadi : 'assets/images/user.png') }}"
                                 alt="User">
                         </div>
 
-                        <div class="card-content-data">
-                            <div class="card-content-data-field text-responsive">
-                                <div class="mb-3">
-                                    <span>Nama:</span>
+                        <div style="width: 100%">
+                            <div class="card-content-data">
+                                <div class="card-content-data-field text-responsive">
+                                    <div class="mb-3">
+                                        <span>Nama:</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <span>NRP:</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <span>Pangkat:</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <span>Jabatan:</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <span>Kesatuan:</span>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <span>NRP:</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>Pangkat:</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>Jabatan:</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>Kesatuan:</span>
+
+                                <div class="card-content-data-field-value text-responsive">
+                                    <div class="mb-3">
+                                        <span>{{ $card->nama ?? "-" }}</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <span>{{ $card->nrp ?? "-" }}</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <span>{{ $card->pangkat ?? "-" }}</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <span>{{ $card->jabatan ?? "-" }}</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <span>{{ $card->kesatuan ?? "-" }}</span>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="card-content-data-field-value text-responsive">
-                                <div class="mb-3">
-                                    <span>{{ $card->nama ?? "-" }}</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>{{ $card->nrp ?? "-" }}</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>{{ $card->pangkat ?? "-" }}</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>{{ $card->jabatan ?? "-" }}</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>{{ $card->kesatuan ?? "-" }}</span>
-                                </div>
+                            <div class="content-approver">
+                                <p>KEPALA KEPOLISIAN RESOR CIANJUR POLDA JABAR</p>
+                                <p style="border-bottom: 1px solid #000">Ashar Ajahari S.H, P.D.I</p>
+                                <p>Ajun Ajudan Polisi NRP 0012</p>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                     <div class="card-user-footer">
                         <p class="text-responsive">BERLKAU S/D {{ $card->berlaku_sampai_dengan }}</p>
                     </div>
+
                 </div>
             </div>
 
             <div class="card-user">
-                <p class="text-responsive text-center">DATA SENJATA API</p>
-
-                <div class="card-user-body">
-
-                    <div class="card-user-body-content">
-
-                        <div class="card-content-data">
+                <div class="card-weapon">
+                    <div id="data-senjata-api">
+                        <p class="text-responsive">DATA SENJATA API</p>
+                        <div class="card-content-senajata-api">
                             <div class="card-content-data-field text-responsive">
                                 <div class="mb-3">
-                                    <span>Jenis:</span>
+                                    <span>Jenis : {{ $card->jenis ?? "-" }}</span>
                                 </div>
                                 <div class="mb-3">
-                                    <span>Type:</span>
+                                    <span>Type : {{ $card->type ?? "-" }}</span>
                                 </div>
                                 <div class="mb-3">
-                                    <span>Nomor:</span>
+                                    <span>Nomor : {{ $card->nomor ?? "-" }}</span>
                                 </div>
                                 <div class="mb-3">
-                                    <span>Kaliber:</span>
-                                </div>
-                            </div>
-
-                            <div class="card-content-data-field-value text-responsive">
-                                <div class="mb-3">
-                                    <span>{{ $card->jenis ?? "-" }}</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>{{ $card->type ?? "-" }}</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>{{ $card->nomor ?? "-" }}</span>
-                                </div>
-                                <div class="mb-3">
-                                    <span>{{ $card->kaliber ?? "-" }}</span>
+                                    <span>Kaliber : {{ $card->kaliber ?? "-" }}</span>
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div id="data-ketentuan">
+                        <p class="text-responsive">Ketentuan: </p>
+                        <p class="mb-3">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos inventore, sed, odit quia odio minus doloribus tenetur debitis, consequatur quibusdam ratione vel? Eos facilis magni obcaecati, odio saepe quos repellat.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card-weapon">
+                    <div style="width: 50%" class="text-center">
+                        <p>Alamat Pembawa</p>
+                        <p style="border-bottom: 1px solid #000">Ashar Ajahari S.H, P.D.I</p>
+                        <p>Ajun Ajudan Polisi NRP 0012</p>
+                    </div>
+                    <div style="width: 50%">
+                        <p class="mb-3">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos inventore, sed, odit quia odio minus doloribus tenetur debitis, consequatur quibusdam ratione vel? Eos facilis magni obcaecati, odio saepe quos repellat.
+                        </p>
+
                     </div>
                 </div>
             </div>
