@@ -36,6 +36,11 @@ class KartuPengajuan extends Model
         return $this->belongsTo(Weapon::class, 'id_senjata');
     }
 
+    public function user_attempt()
+    {
+        return $this->belongsTo(Akun::class, 'update_by','id_akun');
+    }
+
     public function tes()
     {
         return $this->belongsTo(Tes::class, 'tes_id');

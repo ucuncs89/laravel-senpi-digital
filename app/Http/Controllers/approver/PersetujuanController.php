@@ -4,6 +4,7 @@ namespace App\Http\Controllers\approver;
 
 use App\Http\Controllers\Controller;
 use App\Models\KartuPengajuan;
+use App\Models\Personil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,7 @@ class PersetujuanController extends Controller
     {
         $kartu = KartuPengajuan::findOrFail($id);
         $user = Auth::user();
-
+        $personil = Personil::find($user->personil_id);
         $kodeKartu = time();
         $status = "Diterima";
         $berlakuSampaiDengan = now()->addYears(5);
@@ -32,7 +33,7 @@ class PersetujuanController extends Controller
             'status' => $status,
             'berlaku_sampai_dengan' => $berlakuSampaiDengan,
             'tanggal_update' => now(),
-            'update_by' => $user->id,
+            'update_by' => $personil->nama,
         ];
         try {
             $kartu->update($kartuData);

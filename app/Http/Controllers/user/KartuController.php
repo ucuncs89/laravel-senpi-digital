@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Akun;
 use App\Models\KartuPengajuan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,6 +49,7 @@ class KartuController extends Controller
                 'kartu_pengajuan.tanggal_update',
                 'kartu_pengajuan.status',
                 'kartu_pengajuan.berlaku_sampai_dengan',
+                'kartu_pengajuan.update_by',
                 'personil.id_personil',
                 'personil.nrp',
                 'personil.nama',
@@ -65,7 +67,6 @@ class KartuController extends Controller
             ->where('kartu_pengajuan.id_personil', '=', $user->personil_id)
             ->where('kartu_pengajuan.id', '=', $id)
             ->first();
-
         return view('user.kartu.detail', compact('card'));
     }
 }

@@ -66,8 +66,8 @@
                             </div>
                             <div class="content-approver">
                                 <p>KEPALA KEPOLISIAN RESOR CIANJUR POLDA JABAR</p>
-                                <p style="border-bottom: 1px solid #000">Ashar Ajahari S.H, P.D.I</p>
-                                <p>Ajun Ajudan Polisi NRP 0012</p>
+                                <p style="border-bottom: 1px solid #000">{{$card->update_by }}</p>
+                                {{-- <p>Ajun Ajudan Polisi NRP 0012</p> --}}
                             </div>
                         </div>
 
@@ -104,22 +104,8 @@
                     <div id="data-ketentuan">
                         <p class="text-responsive">Ketentuan: </p>
                         <p class="mb-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos inventore, sed, odit quia odio minus doloribus tenetur debitis, consequatur quibusdam ratione vel? Eos facilis magni obcaecati, odio saepe quos repellat.
+                            -
                         </p>
-                    </div>
-                </div>
-
-                <div class="card-weapon">
-                    <div style="width: 50%" class="text-center">
-                        <p>Alamat Pembawa</p>
-                        <p style="border-bottom: 1px solid #000">Ashar Ajahari S.H, P.D.I</p>
-                        <p>Ajun Ajudan Polisi NRP 0012</p>
-                    </div>
-                    <div style="width: 50%">
-                        <p class="mb-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos inventore, sed, odit quia odio minus doloribus tenetur debitis, consequatur quibusdam ratione vel? Eos facilis magni obcaecati, odio saepe quos repellat.
-                        </p>
-
                     </div>
                 </div>
             </div>
