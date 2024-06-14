@@ -36,6 +36,20 @@
     align-items: center;
 }
 
+.wrapper-nrp {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.wrapper-nrp-input {
+    width: 100%;
+}
+
+.wrapper-nrp-btn .btn {
+    margin-top: 0px !important;
+}
+
 @media (max-width: 767.98px) {
     .wrapper {
         padding: 0 24px;
