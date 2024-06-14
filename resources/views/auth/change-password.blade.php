@@ -1,8 +1,18 @@
 @extends("layouts.master-auth")
 @section("content")
+    @if (session("error"))
+        <div id="error-messages" class="position-absolute fade-out end-0 top-10 p-3" style="z-index: 1000;">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session("error") }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
     <div class="container">
         <div class="wrapper">
-            <form method="POST" action="" id="changePasswordForm">
+            <form method="POST"
+                action="{{ route("forgot-password.change-password-update-password") }}?id_akun={{ request()->query("id_akun") }}"
+                id="changePasswordForm">
                 @csrf
                 <section class="card">
                     @error("email")
@@ -20,9 +30,6 @@
                         </div>
                         <input type="password" class="form-control mb-3" id="password" placeholder="Masukan Password Baru"
                             name="password">
-                        <div id="passwordError" class="alert alert-danger d-none">
-                            Passwords do not match.
-                        </div>
                         <input type="password" class="form-control mb-3" id="confirm_password"
                             placeholder="Masukan Lagi Password" name="confirm_password">
                         <button class="btn btn-success" type="submit">Kirim</button>
@@ -31,22 +38,4 @@
             </form>
         </div>
     </div>
-    <script>
-        document.getElementById('changePasswordForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent the default form submission
-
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm_password').value;
-            const passwordError = document.getElementById('passwordError');
-
-            if (password !== confirmPassword) {
-                passwordError.classList.remove('d-none'); // Show error message
-            } else {
-                passwordError.classList.add('d-none'); // Hide error message
-                // Submit the form or perform your desired action here
-                // Optionally, you can manually submit the form
-                // document.getElementById('changePasswordForm').submit();
-            }
-        });
-    </script>
 @endsection

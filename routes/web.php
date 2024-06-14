@@ -39,10 +39,12 @@ Route::post('/login', [AuthController::class, 'login'])->name('loginPost');
 
 
 Route::post('/register', [AuthController::class, 'register'])->name('registerPost');
+Route::get('/search-nrp', [AuthController::class, 'searchNrp'])->name('search-nrp');
 
 Route::get('/forgot-password', [AuthController::class, 'showCheckEmailForm'])->name('forgot-password');
 Route::post('/forgot-password-send', [AuthController::class, 'sendEmailForgot'])->name('send-forgot-password');
 Route::get('/forgot-password/change-password', [AuthController::class, 'showChangePasswordForm'])->name('forgot-password.change-password');
+Route::post('/forgot-password/change-password', [AuthController::class, 'updatePassword'])->name('forgot-password.change-password-update-password');
 
 Route::get('/profile', [ProfileController::class, 'Index'])->name('profile')->middleware('auth');
 Route::put('/profile', [ProfileController::class, 'Update'])->name('profile.update')->middleware('auth');
