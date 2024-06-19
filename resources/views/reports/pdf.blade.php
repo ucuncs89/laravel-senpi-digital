@@ -42,8 +42,7 @@
 
     <body>
         <section class="section-kop-surat">
-            <p>KEPOLISIAN NEGARA REBUBLIK</p>
-            <p>INDONESIA</p>
+            <p>KEPOLISIAN NEGARA REBUBLIK INDONESIA</p>
             <p>DAERAH JAWA BARAT</p>
             <p>RESOR CIANJUR</p>
         </section>
